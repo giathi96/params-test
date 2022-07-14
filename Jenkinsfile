@@ -20,6 +20,9 @@ pipeline {
             when {
                 expression { "${Lab}" != 'perf-2' }
             }
+            steps {
+                echo "Hello, bitwiseman!"
+            }
         }  
         stage('build binary') {
             steps {
