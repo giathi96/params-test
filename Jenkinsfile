@@ -5,7 +5,9 @@ pipeline {
     agent any 
     stages {
         stage('Clone repo') {
-            echo 'clone repo'
+            steps {
+                echo 'clone repo'
+            }
         }
         stage('Configuration') {
             steps {
