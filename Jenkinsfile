@@ -18,11 +18,11 @@ pipeline {
                             }
                         }
                 }
+                echo "Features: ${Features}"
                 echo "Env in jenkinsfile: ${list}"
                 echo "Env[1] in jenkinsfile: ${list[1]}"
                 echo "Lab: ${Lab}"  
                 echo "Task: ${Task}"
-                echo "Features: ${Features}"
             }
         }
         stage('Speak') {
