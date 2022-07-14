@@ -1,20 +1,10 @@
-def getArr(){
-    arr = "${features}"
-    list = arr.split(',').collect{it as String}
-    for(i = 0; i < list.size(); i++){
-        if (list[i] == ""){
-            list.remove(i);
-            i--;
-        }
-    }
-    return list
-}
+/
 
 pipeline {
     agent any
-    environment{
-        ft = getArr()
-    }
+    // environment{
+    //     ft = getArr()
+    // }
     stages {
         stage('Clone repo') {
             steps {
@@ -23,10 +13,19 @@ pipeline {
         }
         stage('Configuration') {
             steps {
-                echo "Env in jenkinsfile: ${ft}"
-                echo "Env[1] in jenkinsfile: ${ft[1]}"
-                echo "Env[1] in jenkinsfile: ${ft}[1]"
-                echo "Lab: ${Lab}"
+                script{
+                    arr = "${features}"
+                        list = arr.split(',').collect{it as String}
+                        for(i = 0; i < list.size(); i++){
+                            if (list[i] == ""){
+                                list.remove(i);
+                                i--;
+                            }
+                        }
+                }
+                echo "Env in jenkinsfile: ${list}"
+                echo "Env[1] in jenkinsfile: ${list[1]}"
+                echo "Lab: ${Lab}"  
                 echo "Task: ${Task}"
                 echo "Features: ${Features}"
             }
