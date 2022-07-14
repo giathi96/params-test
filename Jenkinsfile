@@ -10,6 +10,7 @@ pipeline {
             steps {
                 echo "STAGE: CONFIGURATION"
                 script{
+                        lab = "${params.Lab}"
                         taskArr = "${params.Task}".split(',').collect{it as String}
                         for(i = 0; i < taskArr.size(); i++){
                             taskArr[i].replaceAll("\\s","")
@@ -24,8 +25,8 @@ pipeline {
                             tenantIndex = taskArr[1];
                         }    
                 } 
-                echo "TASSK:  ${task}"      
-                echo "INDEX: ${tenantIndex}"
+                echo "TASK:  ${task}"  
+                echo "LAB: ${lab}"
             }
         }
         stage('Create new tenant') {
