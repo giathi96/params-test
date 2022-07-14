@@ -23,11 +23,11 @@ pipeline {
                         if (taskArr.size() == 2){
                             tenantIndex = taskArr[1];
                         }    
-                }       
+                } 
+                echo "TASSK:  ${task}"      
+                echo "INDEX: ${tenantIndex}"
             }
-                echo "LAB: ${lab}"
-                echo"FEATURES: ${features}"
-        }           
+        }
         stage('Create new tenant') {
             when {
                 expression{"${task}" == "all" || "${task}" == "create"}
@@ -56,16 +56,17 @@ pipeline {
                 echo "- Run create-tenant.py"
                 echo "${exec}"
             }
-        }  
-        stage('deployment') {
-            steps {
-                echo "STAGE: DEPLOYMENT"
-            }
-        }
-        stage('login tenant') {
-            steps {
-                echo "STAGE: LOGIN TENANT"
-            }
-        }
+        }       
     }
 }
+
+        // stage('deployment') {
+        //     steps {
+        //         echo "STAGE: DEPLOYMENT"
+        //     }
+        // }
+        // stage('login tenant') {
+        //     steps {
+        //         echo "STAGE: LOGIN TENANT"
+        //     }
+        // }
