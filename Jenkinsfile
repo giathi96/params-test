@@ -4,13 +4,14 @@ pipeline {
     // }
     agent any 
     stages {
-        stage('clone repo') {
-            checkout csm
+        stage('Clone repo') {
+            echo 'clone repo'
         }
-        stage('check fmt') {
+        stage('Configuration') {
             steps {
-                echo 'Check fmt'
-                sh 'python3 --version'
+                echo "Lab: ${Lab}"
+                echo "Lab: ${Task}"
+                echo "Lab: ${Features}"
             }
         }
         stage('build binary') {
@@ -21,8 +22,6 @@ pipeline {
         stage('test perf with params') {
             steps {
                 echo 'test perf with params'
-                echo "Email ${params.Voice}"
-                echo "Email ${Email}"
                 echo 'Done!!'
             }
         }
