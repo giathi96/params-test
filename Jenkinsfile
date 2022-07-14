@@ -26,6 +26,7 @@ pipeline {
                             }
                         }
                         task = taskArr[0];
+                        tenantIndex = "";
                         if (taskArr.size() == 2){
                             tenantIndex = taskArr[1];
                         }
