@@ -45,7 +45,7 @@ pipeline {
                     }
                     exec = "python create-tenant.py --lab ${lab} " 
                     println(features.getClass())
-                    println(feature[0])
+                    println(features[0])
                     println(features[0].getClass())
                     // if ("${features}".size() != 0) {
                     //     for (i = o; i < "${features}".size(); i +=2){
@@ -56,17 +56,18 @@ pipeline {
                 echo "- Run create-tenant.py"
                 echo "${exec}"
             }
+        }
+        stage('deployment') {
+            steps {
+                echo "STAGE: DEPLOYMENT"
+            }
+        }
+        stage('login tenant') {
+            steps {
+                echo "STAGE: LOGIN TENANT"
+            }
         }       
     }
 }
 
-        // stage('deployment') {
-        //     steps {
-        //         echo "STAGE: DEPLOYMENT"
-        //     }
-        // }
-        // stage('login tenant') {
-        //     steps {
-        //         echo "STAGE: LOGIN TENANT"
-        //     }
-        // }
+        
