@@ -19,8 +19,8 @@ pipeline {
                         }
                 }
                 echo "Features: ${features}"
-                echo "Env in jenkinsfile: ${list}"
-                echo "Env[1] in jenkinsfile: ${list[1]}"
+                echo "Env in jenkinsfile: ${features}"
+                echo "Env[1] in jenkinsfile: ${features[1]}"
                 echo "Lab: ${Lab}"  
                 echo "Task: ${Task}"
             }
