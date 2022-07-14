@@ -9,7 +9,7 @@ pipeline {
         stage('Configuration') {
             steps {
                 echo "STAGE: CONFIGURATION"
-                script
+                script{
                         taskArr = "${params.Task}".split(',').collect{it as String}
                         for(i = 0; i < taskArr.size(); i++){
                             taskArr[i].replaceAll("\\s","")
@@ -22,12 +22,12 @@ pipeline {
                         tenantIndex = "";
                         if (taskArr.size() == 2){
                             tenantIndex = taskArr[1];
-                        }           
-                }
+                        }    
+                }       
+            }
                 echo "LAB: ${lab}"
                 echo"FEATURES: ${features}"
-            }           
-        }
+        }           
         stage('Create new tenant') {
             when {
                 expression{"${task}" == "all" || "${task}" == "create"}
