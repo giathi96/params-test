@@ -31,11 +31,11 @@ pipeline {
                             tenantIndex = taskArr[1];
                         }           
                 }
-            }
-
-            echo "LAB: ${lab}"
-            echo "TASK: ${task}"
-            echo  "INDEX: ${tenantIndex}"
+                echo "LAB: ${lab}"
+                echo"FEATURES: ${features}"
+                echo "TASK: ${task}"
+                echo  "INDEX: ${tenantIndex}"
+            }           
         }
         stage('Create new tenant') {
             when {
