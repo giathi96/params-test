@@ -39,7 +39,6 @@ pipeline {
             }           
         }
         stage('Create new tenant') {
-            echo "STAGE: CREATE NEW TENANT"
             when {
                 anyOf {
                     anyOf {
@@ -49,20 +48,17 @@ pipeline {
                 }
             }
             steps {
-                echo "Khac skip va deploy"
+                echo "STAGE: CREATE NEW TENANT"
             }
         }  
         stage('deployment') {
-            echo "STAGE: DEPLOYMENT"
             steps {
-                echo 'Done!!'
+                echo "STAGE: DEPLOYMENT"
             }
         }
         stage('login tenant') {
-            echo "STAGE: LOGIN TENANT"
             steps {
-                echo 'test perf with params'
-                echo 'Done!!'
+                echo "STAGE: LOGIN TENANT"
             }
         }
     }
