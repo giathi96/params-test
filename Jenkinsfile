@@ -8,6 +8,7 @@ pipeline {
         }
         stage('Configuration') {
             steps {
+                echo "STAGE: CONFIGURATION"
                 script{
                         features = "${params.Features}".split(',').collect{it as String}
                         for(i = 0; i < features.size(); i++){
@@ -38,6 +39,7 @@ pipeline {
             }           
         }
         stage('Create new tenant') {
+            echo "STAGE: CREATE NEW TENANT"
             when {
                 anyOf {
                     anyOf {
@@ -51,11 +53,13 @@ pipeline {
             }
         }  
         stage('deployment') {
+            echo "STAGE: DEPLOYMENT"
             steps {
                 echo 'Done!!'
             }
         }
         stage('login tenant') {
+            echo "STAGE: LOGIN TENANT"
             steps {
                 echo 'test perf with params'
                 echo 'Done!!'
