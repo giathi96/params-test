@@ -5,22 +5,16 @@ pipeline {
     agent any 
     stages {
         stage('clone repo') {
-            steps {
-                echo "Workspace: ${WORKSPACE}"
-                echo 'clone repo'
-                echo "PATH is: ${env.Path}" 
-            }
+            checkout csm
         }
         stage('check fmt') {
             steps {
                 echo 'Check fmt'
-                sh 'go version'
-                sh 'go fmt'
+                sh 'python3 --version'
             }
         }
         stage('build binary') {
             steps {
-                echo 'hello ${Voice}'
                 echo 'Done!!'
             }
         }
