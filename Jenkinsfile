@@ -40,10 +40,8 @@ pipeline {
         }
         stage('Create new tenant') {
             when {
-                anyOf {
                     environment name: 'task', value: 'all'
-                    environment name: 'task', value: 'create'
-                }
+                    // environment name: 'task', value: 'create'
             }
             steps {
                 echo "STAGE: CREATE NEW TENANT"
