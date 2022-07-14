@@ -44,21 +44,22 @@ pipeline {
             }
             steps {
                 echo "STAGE: CREATE NEW TENANT"
-            }
-        }  
-        stage('deployment') {
-            steps {
                 script{
                     exec = "python create-tenant.py --lab ${lab} " 
+                    echo "${features}".getClass()
                     // if ("${features}".size() != 0) {
                     //     for (i = o; i < "${features}".size(); i +=2){
                     //         exec += "--features ${features[i]} "
                     //     } 
                     // }
                 }
-                echo "STAGE: DEPLOYMENT"
                 echo "- Run create-tenant.py"
                 echo "${exec}"
+            }
+        }  
+        stage('deployment') {
+            steps {
+                echo "STAGE: DEPLOYMENT"
             }
         }
         stage('login tenant') {
