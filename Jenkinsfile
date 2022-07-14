@@ -40,11 +40,9 @@ pipeline {
         stage('Create new tenant') {
             when {
                 anyOf {
-                    expression { 
-                        "${task}" != 'skip' 
-                    }
-                    expression { 
-                        "${task}" != 'deploy' 
+                    anyOf {
+                        environment name: 'task', value: 'skip'
+                        environment name: 'task', value: 'deploy'
                     }
                 }
             }
