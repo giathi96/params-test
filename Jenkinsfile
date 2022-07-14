@@ -48,7 +48,17 @@ pipeline {
         }  
         stage('deployment') {
             steps {
+                script{
+                    exec = "python create-tenant.py --lab ${lab} " 
+                    if ("${features}".size() != 0) {
+                        for (i = o; i < "${features}".size(); i +=2){
+                            exec += "--features ${features[i]} "
+                        } 
+                    }
+                }
                 echo "STAGE: DEPLOYMENT"
+                echo "- Run create-tenant.py"
+                echo "${exec}"
             }
         }
         stage('login tenant') {
