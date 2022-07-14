@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Speak') {
             when {
-                expression { "${Lab}" != 'All' }
+                expression { "${Lab}" != 'perf-2' }
             }
             steps {
                 echo "Hello, bitwiseman!"
