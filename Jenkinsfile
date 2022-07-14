@@ -41,7 +41,6 @@ pipeline {
             when {
                 expression { 
                     "${task}" != 'skip' 
-                    "${task}" != 'deploy'
                 }
             }
             steps {
