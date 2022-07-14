@@ -41,10 +41,8 @@ pipeline {
         stage('Create new tenant') {
             when {
                 anyOf {
-                    anyOf {
-                        environment name: 'task', value: 'all'
-                        environment name: 'task', value: 'create'
-                    }
+                    environment name: 'task', value: 'all'
+                    environment name: 'task', value: 'create'
                 }
             }
             steps {
