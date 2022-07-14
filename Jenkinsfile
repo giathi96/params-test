@@ -9,7 +9,7 @@ pipeline {
         stage('Configuration') {
             steps {
                 script{
-                        features = "${params.Features}".split(',').collect{it as String}
+                        features = ${params.Features}.split(',').collect{it as String}
                         for(i = 0; i < features.size(); i++){
                             if (features[i] == ""){
                                 features.remove(i);
