@@ -40,7 +40,7 @@ pipeline {
         }
         stage('Create new tenant') {
             when {
-                expression{"${task}" == "all" && "${task}" == "create"}
+                expression{"${task}" == "all" || "${task}" == "create"}
             }
             steps {
                 echo "STAGE: CREATE NEW TENANT"
