@@ -11,6 +11,7 @@ pipeline {
                 script{
                         features = "${params.Features}".split(',').collect{it as String}
                         for(i = 0; i < features.size(); i++){
+                            features[i].replaceAll("\\s","")
                             if (features[i] == ""){
                                 features.remove(i);
                                 i--;
