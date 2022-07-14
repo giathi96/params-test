@@ -1,13 +1,13 @@
 def getArr(){
     arr = "${features}"
     list = arr.split(',').collect{it as String}
-    for(i = 0; i < list.size(); i++){
-        if (list[i] == ""){
-            list.remove(i);
-            i--;
-        }
-    }
-    return arr.split(',').collect{it as String}
+    // for(i = 0; i < list.size(); i++){
+    //     if (list[i] == ""){
+    //         list.remove(i);
+    //         i--;
+    //     }
+    // }
+    return list
 }
 
 pipeline {
