@@ -49,7 +49,7 @@ pipeline {
                     //         exec += "--features " + features[i] + " "
                     //     } 
                     // }
-                    exec += "HIHI"
+                    exec += features[0]
                 }
                 echo "- Run create-tenant.py"
                 echo "${exec}"
