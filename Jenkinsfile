@@ -1,8 +1,8 @@
 pipeline {
-    // parameters{
-    //     string(name: 'task', defaultValue: 'none', description: 'skip the configuration')
-    // }
-    agent any 
+    agent any
+    environment{
+        features = []
+    }
     stages {
         stage('Clone repo') {
             steps {
@@ -11,6 +11,7 @@ pipeline {
         }
         stage('Configuration') {
             steps {
+                echo "Env in jenkinsfile: ${features}"
                 echo "Lab: ${Lab}"
                 echo "Task: ${Task}"
                 echo "Features: ${Features}"
@@ -21,7 +22,7 @@ pipeline {
                 expression { "${Lab}" != 'perf-2' }
             }
             steps {
-                echo "Hello, bitwiseman!"
+                echo "Do something"
             }
         }  
         stage('build binary') {
