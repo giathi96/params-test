@@ -46,8 +46,8 @@ pipeline {
                 echo "STAGE: CREATE NEW TENANT"
                 script{
                     exec = "python create-tenant.py --lab ${lab} " 
-                    println("${features}".getClass())
-                    println("${features[0]}".getClass())
+                    println(${features}.getClass())
+                    println(${features[0]}.getClass())
                     // if ("${features}".size() != 0) {
                     //     for (i = o; i < "${features}".size(); i +=2){
                     //         exec += "--features ${features[i]} "
