@@ -40,8 +40,7 @@ pipeline {
         }
         stage('Create new tenant') {
             when {
-                    environment name: 'task', value: 'all'
-                    // environment name: 'task', value: 'create'
+                    expression{"${task}" == "all"}
             }
             steps {
                 echo "STAGE: CREATE NEW TENANT"
