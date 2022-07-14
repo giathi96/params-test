@@ -24,6 +24,8 @@ pipeline {
         stage('Configuration') {
             steps {
                 echo "Env in jenkinsfile: ${ft}"
+                echo "Env[1] in jenkinsfile: ${ft[1]}"
+                echo "Env[1] in jenkinsfile: ${ft}[1]"
                 echo "Lab: ${Lab}"
                 echo "Task: ${Task}"
                 echo "Features: ${Features}"
