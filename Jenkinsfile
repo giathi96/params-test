@@ -17,7 +17,7 @@ pipeline {
                                 i--;
                             }
                         }
-                        taskArr == "${params.Task}".split(',').collect{it as String}
+                        taskArr = "${params.Task}".split(',').collect{it as String}
                         for(i = 0; i < taskArr.size(); i++){
                             taskArr[i].replaceAll("\\s","")
                             if (taskArr[i] == ""){
@@ -25,10 +25,10 @@ pipeline {
                                 i--;
                             }
                         }
-                        // task = taskArr[0];
-                        // if (taskArr.size() == 2){
-                        //     tenantIndex = taskArr[1];
-                        // }
+                        task = taskArr[0];
+                        if (taskArr.size() == 2){
+                            tenantIndex = taskArr[1];
+                        }
                         
                 }
                 echo "Features: ${features}"
