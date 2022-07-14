@@ -25,15 +25,15 @@ pipeline {
                                 i--;
                             }
                         }
-                        task = taskArr[0];
-                        if (taskArr.size() == 2){
-                            tenantIndex = taskArr[1];
-                        }
+                        // task = taskArr[0];
+                        // if (taskArr.size() == 2){
+                        //     tenantIndex = taskArr[1];
+                        // }
                         
                 }
                 echo "Features: ${features}"
                 echo "Task: ${task}"
-                echo "Task: ${tenantIndex}"
+                echo "Index: ${tenantIndex}"
             }
         }
         stage('Speak') {
