@@ -29,10 +29,13 @@ pipeline {
                         tenantIndex = "";
                         if (taskArr.size() == 2){
                             tenantIndex = taskArr[1];
-                        }
-                        
+                        }           
                 }
             }
+
+            echo "LAB: ${lab}"
+            echo "TASK: ${task}"
+            echo  "INDEX: ${tenantIndex}"
         }
         stage('Create new tenant') {
             when {
