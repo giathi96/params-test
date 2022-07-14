@@ -32,25 +32,25 @@ pipeline {
                         }
                         
                 }
-                echo "Features: ${features}"
-                echo "Task: ${task}"
-                echo "Index: ${tenantIndex}"
             }
         }
-        stage('Speak') {
+        stage('Create new tenant') {
             when {
-                expression { "${Lab}" != 'perf-2' }
+                expression { 
+                    "${task}" != 'skip' 
+                    "${task}" != 'deploy'
+                }
             }
             steps {
-                echo "Do something"
+                echo "Khac skip va deploy"
             }
         }  
-        stage('build binary') {
+        stage('deployment') {
             steps {
                 echo 'Done!!'
             }
         }
-        stage('test perf with params') {
+        stage('login tenant') {
             steps {
                 echo 'test perf with params'
                 echo 'Done!!'
