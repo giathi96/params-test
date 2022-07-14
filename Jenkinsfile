@@ -9,14 +9,13 @@ pipeline {
         stage('Configuration') {
             steps {
                 script{
-                    arr = "${params.Features}"
-                        features = arr.split(',').collect{it as String}
+                        features = ${params.Features}.split(',').collect{it as String}
                         for(i = 0; i < features.size(); i++){
                             if (features[i] == ""){
                                 features.remove(i);
                                 i--;
                             }
-                        }
+                        } 
                 }
                 echo "Features: ${features}"
                 echo "Env in jenkinsfile: ${features}"
