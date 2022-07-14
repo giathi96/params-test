@@ -67,5 +67,4 @@ pipeline {
                 echo "STAGE: LOGIN TENANT"
             }
         }
-    }
 }
