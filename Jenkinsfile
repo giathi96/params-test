@@ -18,7 +18,7 @@ pipeline {
                             }
                         }
                         taskArr == "${params.Task}".split(',').collect{it as String}
-                        for(i = 0; i < task.size(); i++){
+                        for(i = 0; i < taskArr.size(); i++){
                             taskArr[i].replaceAll("\\s","")
                             if (taskArr[i] == ""){
                                 taskArr.remove(i);
