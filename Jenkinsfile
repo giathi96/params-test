@@ -39,8 +39,13 @@ pipeline {
         }
         stage('Create new tenant') {
             when {
-                expression { 
-                    "${task}" != 'skip' 
+                anyOf {
+                    expression { 
+                        "${task}" != 'skip' 
+                    }
+                    expression { 
+                        "${task}" != 'deploy' 
+                    }
                 }
             }
             steps {
