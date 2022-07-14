@@ -14,6 +14,8 @@ pipeline {
                 echo "Lab: ${Lab}"
                 echo "Task: ${Task}"
                 echo "Features: ${Features}"
+                echo "Task2: ${Task2}"
+                echo "Detail: ${task_detail}"
             }
         }
         stage('build binary') {
