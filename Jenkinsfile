@@ -16,13 +16,24 @@ pipeline {
                                 features.remove(i);
                                 i--;
                             }
-                        } 
+                        }
+                        taskArr == "${params.Task}".split(',').collect{it as String}
+                        for(i = 0; i < task.size(); i++){
+                            taskArr[i].replaceAll("\\s","")
+                            if (taskArr[i] == ""){
+                                taskArr.remove(i);
+                                i--;
+                            }
+                        }
+                        task = taskArr[0];
+                        if (taskArr.size() == 2){
+                            tenantIndex = taskArr[1];
+                        }
+                        
                 }
                 echo "Features: ${features}"
-                echo "Env in jenkinsfile: ${features}"
-                echo "Env[1] in jenkinsfile: das${features[1]}"
-                echo "Lab: ${Lab}"  
-                echo "Task: ${Task}"
+                echo "Task: ${task}"
+                echo "Task: ${tenantIndex}"
             }
         }
         stage('Speak') {
