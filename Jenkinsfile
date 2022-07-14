@@ -1,10 +1,5 @@
-/
-
 pipeline {
     agent any
-    // environment{
-    //     ft = getArr()
-    // }
     stages {
         stage('Clone repo') {
             steps {
