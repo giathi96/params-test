@@ -18,6 +18,14 @@ pipeline {
                 echo "Detail: ${task_detail}"
             }
         }
+        stage('Speak') {
+            when {
+                expression { params.Lab != 'All' }
+            }
+            steps {
+                echo "Hello, bitwiseman!"
+            }
+        }  
         stage('build binary') {
             steps {
                 echo 'Done!!'
