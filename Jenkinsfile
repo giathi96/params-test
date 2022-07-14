@@ -42,8 +42,8 @@ pipeline {
             when {
                 anyOf {
                     anyOf {
-                        environment name: 'task', value: 'skip'
-                        environment name: 'task', value: 'deploy'
+                        environment name: 'task', value: 'all'
+                        environment name: 'task', value: 'create'
                     }
                 }
             }
