@@ -44,11 +44,12 @@ pipeline {
                         }
                     }
                     exec = "python create-tenant.py --lab ${lab} " 
-                    if (features.size() != 0) {
-                        for (i = o; i < features.size(); i +=2){
-                            exec += "--features " + features[i] + " "
-                        } 
-                    }
+                    // if (features.size() != 0) {
+                    //     for (i = o; i < features.size(); i +=2){
+                    //         exec += "--features " + features[i] + " "
+                    //     } 
+                    // }
+                    exec += "HIHI"
                 }
                 echo "- Run create-tenant.py"
                 echo "${exec}"
