@@ -9,15 +9,7 @@ pipeline {
         stage('Configuration') {
             steps {
                 echo "STAGE: CONFIGURATION"
-                script{
-                        features = "${params.Features}".split(',').collect{it as String}
-                        for(i = 0; i < features.size(); i++){
-                            features[i].replaceAll("\\s","")
-                            if (features[i] == ""){
-                                features.remove(i);
-                                i--;
-                            }
-                        }
+                script
                         taskArr = "${params.Task}".split(',').collect{it as String}
                         for(i = 0; i < taskArr.size(); i++){
                             taskArr[i].replaceAll("\\s","")
@@ -34,8 +26,6 @@ pipeline {
                 }
                 echo "LAB: ${lab}"
                 echo"FEATURES: ${features}"
-                echo "TASK: ${task}"
-                echo  "INDEX: ${tenantIndex}"
             }           
         }
         stage('Create new tenant') {
@@ -45,9 +35,18 @@ pipeline {
             steps {
                 echo "STAGE: CREATE NEW TENANT"
                 script{
+                    features = "${params.Features}".split(',').collect{it as String}
+                    for(i = 0; i < features.size(); i++){
+                        features[i].replaceAll("\\s","")
+                        if (features[i] == ""){
+                            features.remove(i);
+                            i--;
+                        }
+                    }
                     exec = "python create-tenant.py --lab ${lab} " 
-                    println(${features}.getClass())
-                    println(${features[0]}.getClass())
+                    println(features.getClass())
+                    println(feature[0])
+                    println(features[0].getClass())
                     // if ("${features}".size() != 0) {
                     //     for (i = o; i < "${features}".size(); i +=2){
                     //         exec += "--features ${features[i]} "
