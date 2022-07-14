@@ -72,7 +72,6 @@ tasks = [
 html_to_be_rendered = "<select name="task3" id="task3">"
 
 tasks.each { task ->
-    if (task["task_name"] == "All" || task["task_name"] == "Skip Stage"){
             html_to_be_rendered = """
             ${html_to_be_rendered}
             <tr>
@@ -82,20 +81,6 @@ tasks.each { task ->
             </td>
             </tr>
             """
-    } else{
-        html_to_be_rendered = """
-            ${html_to_be_rendered}
-            <tr>
-            <td>
-            <input name=\"value\" alt=\"${task.task_name}\" json=\"${task.task_name}\" type=\"radio\" class=\" \" value=\"${task.value}\">
-            <label title=\"${task.task_name}\" class=\" \">${task.task_name}</label>
-            </td>
-            <td>
-            <input type=\"text\" class=\" \" name=\"value\" value=\"${task.tenant_index}\" placeholder=\"${task.place_holder}\" > </br>
-            </td>
-            </tr>
-        """
-    }
   
 }
 
