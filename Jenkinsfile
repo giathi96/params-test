@@ -27,11 +27,11 @@ pipeline {
                         exec = "python create-tenant.py --lab ${lab} "
 
                         task = taskArr[0];
-                        exec = exec + "${task}"
+                        exec = exec + "--task" + "${task}"
                         tenantIndex = "";
                         if (taskArr.size() == 2){
                             tenantIndex = taskArr[1];
-                            exec = exec + "${tenantIndex} "
+                            exec = exec + "--index " + "${tenantIndex} "
                         }
 
                         features = "${params.Features}".split(',').collect{it as String}
