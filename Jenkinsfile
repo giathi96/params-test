@@ -1,14 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('Clone repo') {
-            steps {
-                echo 'clone repo'
-            }
-        }
         stage('Configuration') {
             steps {
                 echo "STAGE: CONFIGURATION"
+                echo "- Copy file to linux server: compress folder, put to server, extract"
+                echo "- Get config file"
                 script{
                         lab = "${params.Lab}"
                         taskArr = "${params.Task}".split(',').collect{it as String}
@@ -52,18 +49,23 @@ pipeline {
                         } 
                     }
                 }
-                echo "- Run create-tenant.py (if task is  'skip' of 'deployment', skip this stage)"
-                echo "  ${exec}"
+                echo "- Run create-tenant.py (if task is  'all' or 'create', run this stage)"
+                echo "- command: ${exec}"
             }
         }
         stage('deployment') {
+            when {
+                expression{"${task}" == "all" || "${task}" == "deploy"}
+            }
             steps {
                 echo "STAGE: DEPLOYMENT"
+                echo "- Run ccaas-deployment.py (if task is  'all' or 'deployment', run this stage)"
+                echo "- command: python ccaas-deployment.py"
             }
         }
         stage('login tenant') {
             steps {
-                echo "STAGE: LOGIN TENANT"
+                echo "STAGE: LOGIN AGENT"
             }
         }       
     }
