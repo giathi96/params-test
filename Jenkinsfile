@@ -80,6 +80,13 @@ pipeline {
                 echo "STAGE: LOGIN AGENT"
             }
         }
+
+        stage('Inject Traffic Test') {
+            steps {
+                echo "STAGE: Inject Traffic Test"
+            }
+        }
+
         stage('Other stages') {
             steps {
                 echo "STAGE: ...."
