@@ -25,7 +25,8 @@ pipeline {
         }
         stage('Placing files') {
             steps {
-                echo 'STAGE: Placing files in Working Folder...'
+                echo 'STAGE: Placing files'
+                echo '- Placing files in Working Folder...'
                 // sshCommand remote: remote, command: 'rm -Rf ./pythonAdmin/*'
                 // sshCommand remote: remote, command: 'cp -R ./Jenkins/Python/* ./pythonAdmin'
                 // sshCommand remote: remote, command: 'cp ./Jenkins/Config/PythonConfig/Labs/perf-5/ccaas-system-config.json ./pythonAdmin'
