@@ -24,14 +24,14 @@ pipeline {
                                 i--;
                             }
                         }
-                        exec = "python create-tenant.py --lab ${lab} "
+                        exec = "python app.py --lab ${lab} "
 
                         task = taskArr[0];
-                        exec = exec + "--task" + "${task}"
+                        exec = exec + "--task " + "${task}"
                         tenantIndex = "";
                         if (taskArr.size() == 2){
                             tenantIndex = taskArr[1];
-                            exec = exec + "--index " + "${tenantIndex} "
+                            exec = exec + " --index " + "${tenantIndex} "
                         }
 
                         features = "${params.Features}".split(',').collect{it as String}
