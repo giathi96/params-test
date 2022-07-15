@@ -46,9 +46,8 @@ pipeline {
                         } 
                     }    
                 } 
-                echo "- task:  ${task}, run on lab perf-${lab}"
-                echo "- Run create-tenant.py (if task is  'all' or 'create', run this stage)"
-                echo "- command: ${exec}"
+                echo "- PARAMS: task ${task} Tenant Index ${tenantIndex} features ${features}"
+                echo "- Run command: ${exec}"
             }
         }
         stage('Login Agent') {
