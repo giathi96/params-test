@@ -6,7 +6,7 @@ pipeline {
         stage('Copy file to Linux Build Server') {
             steps {
                 echo "STAGE: Copy file to Linux Build Server"
-                echo "- Compress project folder, put to server, extract"
+                echo "- Compress project folder"
                 echo "- Put to Build Server"
                 echo "- Extract in Build Server"
             }
@@ -47,20 +47,10 @@ pipeline {
                     }    
                 } 
                 echo "- task:  ${task}, run on lab perf-${lab}"
+                echo "- Run create-tenant.py (if task is  'all' or 'create', run this stage)"
+                echo "- command: ${exec}"
             }
         }
-        // stage('Create new tenant') {
-        //     when {
-        //         expression{"${task}" == "all" || "${task}" == "create"}
-        //     }
-        //     steps {
-        //         echo "STAGE: CREATE NEW TENANT"
-        //         script{
-        //         }
-        //         echo "- Run create-tenant.py (if task is  'all' or 'create', run this stage)"
-        //         echo "- command: ${exec}"
-        //     }
-        // }
         stage('Login Agent') {
             steps {
                 echo "STAGE: LOGIN AGENT"
