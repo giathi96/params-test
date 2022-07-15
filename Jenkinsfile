@@ -24,10 +24,14 @@ pipeline {
                                 i--;
                             }
                         }
+                        exec = "python create-tenant.py --lab ${lab} "
+
                         task = taskArr[0];
+                        exec = exec + "${task}"
                         tenantIndex = "";
                         if (taskArr.size() == 2){
                             tenantIndex = taskArr[1];
+                            exec = exec + "${tenantIndex} "
                         }
 
                         features = "${params.Features}".split(',').collect{it as String}
@@ -37,16 +41,15 @@ pipeline {
                                 features.remove(i);
                                     i--;
                             }
-                        }
-                    exec = "python create-tenant.py --lab ${lab} " 
-                    if (features.size() != 0) {
-                        exec += "--features "
-                        for (i = 0; i < features.size(); i +=2){
-                            exec = exec + features[i] + " "
                         } 
-                    }    
+                        if (features.size() != 0) {
+                            exec += "--features "
+                            for (i = 0; i < features.size(); i +=2){
+                                exec = exec + features[i] + " "
+                            } 
+                        }    
                 } 
-                echo "- PARAMS: task ${task} Tenant Index ${tenantIndex} features ${features}"
+                echo "- PARAMS: task = ${task} TenantIndex =  ${tenantIndex} Features =  ${features}"
                 echo "- Run command: ${exec}"
             }
         }
