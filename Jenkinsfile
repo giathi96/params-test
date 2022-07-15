@@ -52,7 +52,7 @@ pipeline {
                         } 
                     }
                 }
-                echo "- Run create-tenant.py"
+                echo "- Run create-tenant.py (if task is  'skip' of 'deployment', skip this stage)"
                 echo "  ${exec}"
             }
         }
