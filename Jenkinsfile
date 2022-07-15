@@ -4,10 +4,12 @@ pipeline {
     agent any
     stages {
         stage('Copy file to Linux Build Server') {
-            echo "STAGE: Copy file to Linux Build Server"
-            echo "- Compress project folder, put to server, extract"
-            echo "- Put to Build Server"
-            echo "- Extract in Build Server"
+            steps {
+                echo "STAGE: Copy file to Linux Build Server"
+                echo "- Compress project folder, put to server, extract"
+                echo "- Put to Build Server"
+                echo "- Extract in Build Server"
+            }
         }
         stage('Configuration') {
             steps {
