@@ -52,7 +52,7 @@ pipeline {
                 echo "- command: ${exec}"
             }
         }
-        stage('deployment') {
+        stage('Deployment') {
             when {
                 expression{"${task}" == "all" || "${task}" == "deploy"}
             }
@@ -62,7 +62,7 @@ pipeline {
                 echo "- command: python ccaas-deployment.py"
             }
         }
-        stage('login tenant') {
+        stage('Login Agent') {
             steps {
                 echo "STAGE: LOGIN AGENT"
             }
