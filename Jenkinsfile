@@ -38,7 +38,7 @@ pipeline {
                 echo "STAGE: CONFIGURATION"
                 script{
                         lab = "${params.Lab}"
-                        taskArr = "${params.Task}".split(',').collect{it as String}
+                        taskArr = "${params.Tasks}".split(',').collect{it as String}
                         for(i = 0; i < taskArr.size(); i++){
                             taskArr[i].replaceAll("\\s","")
                             if (taskArr[i] == ""){
