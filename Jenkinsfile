@@ -65,7 +65,7 @@ pipeline {
                             }
                         } 
                         if (features.size() != 0) {
-                            exec += "--features "
+                            exec += " --features "
                             for (i = 0; i < features.size(); i +=2){
                                 exec = exec + features[i] + " "
                             } 
