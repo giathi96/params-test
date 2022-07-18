@@ -46,15 +46,15 @@ pipeline {
                                 i--;
                             }
                         }
-                        exec = "python app.py --lab ${lab} "
+                        command = "python app.py --lab ${lab} "
                         test = "python3 --version "
 
                         task = taskArr[0];
-                        exec = exec + "--task " + "${task}"
+                        command = command + "--task " + "${task}"
                         tenantIndex = "";
                         if (taskArr.size() == 2){
                             tenantIndex = taskArr[1];
-                            exec = exec + " --index " + "${tenantIndex} "
+                            command = command + " --index " + "${tenantIndex} "
                         }
 
                         features = "${params.Features}".split(',').collect{it as String}
@@ -66,14 +66,14 @@ pipeline {
                             }
                         } 
                         if (features.size() != 0) {
-                            exec += " --features "
+                            command += " --features "
                             for (i = 0; i < features.size(); i +=2){
-                                exec = exec + features[i] + " "
+                                command = command + features[i] + " "
                             } 
                         }    
                 } 
                 echo "- PARAMS: task = ${task} TenantIndex =  ${tenantIndex} Features =  ${features}"
-                echo "- Run command: ${exec}"
+                echo "- Run command: ${command}"
                 sh "${test}"
             }
         }
