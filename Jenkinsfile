@@ -47,7 +47,6 @@ pipeline {
                             }
                         }
                         command = "python app.py --lab ${lab} "
-                        test = "python3 --version "
 
                         task = taskArr[0];
                         command = command + "--task " + "${task}"
@@ -74,7 +73,6 @@ pipeline {
                 } 
                 echo "- PARAMS: task = ${task} TenantIndex =  ${tenantIndex} Features =  ${features}"
                 echo "- Run command: ${command}"
-                sh "${test}"
             }
         }
         stage('Login Agent') {
