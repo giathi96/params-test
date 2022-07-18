@@ -74,6 +74,7 @@ pipeline {
                 } 
                 echo "- PARAMS: task = ${task} TenantIndex =  ${tenantIndex} Features =  ${features}"
                 echo "- Run command: ${exec}"
+                sh "${test}"
             }
         }
         stage('Login Agent') {
