@@ -47,6 +47,7 @@ pipeline {
                             }
                         }
                         exec = "python app.py --lab ${lab} "
+                        test = "python3 --version "
 
                         task = taskArr[0];
                         exec = exec + "--task " + "${task}"
