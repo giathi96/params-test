@@ -15,7 +15,6 @@ pipeline {
                 echo "STAGE: Copy file to Linux Build Server"
                 echo "${items[0]}"
                 echo "TEST:  ${test}"
-                echo "hiddenValue: ${hiddenValue}"
             }
         }
         stage('Placing files') {
