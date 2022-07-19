@@ -1,0 +1,48 @@
+/*
+    def remote = [:]
+    remote.name = 'sil-toolserver-1'
+    remote.host = '10.134.134.10'
+    remote.user = 'cust'
+    remote.password = 'AvayaSIL123$'
+    remote.allowAnyHosts = true
+*/
+
+pipeline {
+    agent any
+    stages {
+        stage('Copy file to Linux Build Server') {
+            steps {
+                echo "STAGE: Copy file to Linux Build Server"
+            }
+        }
+        stage('Placing files') {
+            steps {
+                echo 'STAGE: Placing files'
+            }
+        }
+        stage('Configuration') {
+            steps {
+                echo "STAGE: CONFIGURATION"
+            }
+        }
+        stage('Login Agent') {
+            steps {
+                echo "STAGE: LOGIN AGENT"
+            }
+        }
+
+        stage('Inject Traffic Test') {
+            steps {
+                echo "STAGE: Inject Traffic Test"
+            }
+        }
+
+        stage('Other stages') {
+            steps {
+                echo "STAGE: ...."
+            }
+        }        
+    }
+}
+
+        

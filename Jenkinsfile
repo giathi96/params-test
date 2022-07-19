@@ -73,6 +73,7 @@ pipeline {
                 } 
                 echo "- PARAMS: task = ${task} TenantIndex =  ${tenantIndex} Features =  ${features}"
                 echo "- Run command: ${command}"
+                // sshCommand remote: remote, command: "${command}"
             }
         }
         stage('Login Agent') {
