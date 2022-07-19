@@ -14,8 +14,6 @@ pipeline {
             steps {
                 echo "STAGE: Copy file to Linux Build Server"
                 echo "${items}"
-                echo "TEST:  ${test}"
-                echo "FORM: ${Form}"
                 echo "REACT: ${ReactiveRefParam}"
             }
         }
