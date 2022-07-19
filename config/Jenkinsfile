@@ -13,8 +13,9 @@ pipeline {
         stage('Copy file to Linux Build Server') {
             steps {
                 echo "STAGE: Copy file to Linux Build Server"
-                echo "${items}"
-                echo "REACT: ${hidden2}"
+                echo "${Lab}"
+                echo "REACT: ${Task}"
+                echo "REACT: ${Tenant Index}"
             }
         }
         stage('Placing files') {
