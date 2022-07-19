@@ -63,13 +63,6 @@ tasks = [
     ["task_name": "Skip Stage"],
 ]
 
-<select name="task3" id="task3">
-    <option value="">--Please choose an option--</option>
-    <option value="dog">Dog</option>
-    <option value="cat">Cat</option>
-</select>
-
-html_to_be_rendered = "<select name="task3" id="task3">"
 
 tasks.each { task ->
             html_to_be_rendered = """

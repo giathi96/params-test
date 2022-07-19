@@ -1,0 +1,47 @@
+// def itemsAsJson = "[{ name: 'item1' }, { name: 'item2' }, { name: 'item3' }]"
+
+// return """
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.js"
+    integrity="sha256-FnlET6HjAjzJk+xp/VPmlH5dKcYClzy2/yl08DuN4eA=" crossorigin="anonymous"></script>
+<script>
+
+    function itemName(i) {
+        return i.name;
+    }
+
+    function generateUl(i) {
+        return '<li><input name=' + i.name + ' type="checkbox"> <label>' + i.name + '</label></li>';
+    }
+
+    Q('.jenkins-parameter-container')
+        .on('input', '.jenkins-parameter-search', function () {
+            var target = Q(this);
+            var list = target.closest('.jenkins-parameter-list');
+            var search = target.val().toLowerCase();
+
+            if (!search) {
+                list.find('li').show();
+                return false;
+            }
+
+            list.find('li').each(function () {
+                var text = Q(this).text().toLowerCase();
+                var match = text.indexOf(search) > -1;
+                Q(this).toggle(match);
+            });
+        })
+
+        .on('change', '[type="checkbox"]', function () {
+            var container = Q(this).closest('.jenkins-parameter-container');
+            var selected = container.find('[type="checkbox"]:checked');
+            var results = _.map(selected, itemName).join()
+            container.find('.jenkins-parameter-result').val(results || '');
+        });
+
+    var items = ${itemsAsJson}
+
+    _.each(items, function (i) {
+        Q('.jenkins-parameter-input').append(generateUl(i));
+    });
+// </script>
+// """
