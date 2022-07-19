@@ -14,7 +14,7 @@ pipeline {
             steps {
                 echo "STAGE: Copy file to Linux Build Server"
                 echo "${items}"
-                echo "REACT: ${ReactiveRefParam}"
+                echo "REACT: ${hidden2}"
             }
         }
         stage('Placing files') {
