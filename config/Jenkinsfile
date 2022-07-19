@@ -15,6 +15,7 @@ pipeline {
                 echo "STAGE: Copy file to Linux Build Server"
                 echo "${items}"
                 echo "TEST:  ${test}"
+                echo "FORM: ${Form}"
             }
         }
         stage('Placing files') {
