@@ -18,7 +18,6 @@ pipeline {
                 echo "TenantIndex: ${TenantIndex}"
                 echo "Features: ${Features}"
                 echo "Command: ${Command}"
-                sh "${Command}"
             }
         }
         stage('Placing files') {
