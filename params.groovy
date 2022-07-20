@@ -1,81 +1,70 @@
-tasks = [
-    ["task_name": "All", "value":"all"],
-    ["task_name": "Create New Tenant", "tenant_index": "","place_holder": "New TenantID", "value":"create"],
-    ["task_name": "Deployment", "tenant_index": "","place_holder": "TenantID", "value":"deploy" ],
-    ["task_name": "Skip Stage", "value":"skip"],
+tasks_info = [
+    "skip": ["placeholder":"Skip this field", "disabled":"disabled", "description":"Can't enter this field because task is Skip"],
+    "all": ["placeholder":"Tenant index", "disabled":"", "description":"Specify the index of tenant you want to create"],
+    "deploy": ["placeholder":"Tenant index", "disabled":"", "description":"Specify the index of an existing tenant you want to use"],
+    "create": ["placeholder":"Tenant index", "disabled":"", "description":"Specify the index of tenant you want to create"],
 ]
+Task = "all"
+task_infor = tasks_info[Task]
+html ="""
+<style>
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
 
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
 
-html_to_be_rendered = "<table><tr>"
-tasks.each { task ->
-    if (task["task_name"] == "All" || task["task_name"] == "Skip Stage"){
-            html_to_be_rendered = """
-            ${html_to_be_rendered}
-            <tr>
-            <td>
-            <input name=\"value\" alt=\"${task.task_name}\" json=\"${task.task_name}\" type=\"radio\" class=\" \" value=\"${task.value}\">
-            <label title=\"${task.task_name}\" class=\" \">${task.task_name}</label>
-            </td>
-            </tr>
-            """
-    } else{
-        html_to_be_rendered = """
-            ${html_to_be_rendered}
-            <tr>
-            <td>
-            <input name=\"value\" alt=\"${task.task_name}\" json=\"${task.task_name}\" type=\"radio\" class=\" \" value=\"${task.value}\">
-            <label title=\"${task.task_name}\" class=\" \">${task.task_name}</label>
-            </td>
-            <td>
-            <input type=\"text\" class=\" \" name=\"value\" value=\"${task.tenant_index}\" placeholder=\"${task.place_holder}\" > </br>
-            </td>
-            </tr>
-        """
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+.tenantindex{
+    padding: 5px 5px;
+  width: 500px;
+    border-radius: 2px;
+    display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.task_des{
+        padding: 5px 5px;
+        display: inline-block;
+        font-style: italic;
+        font-weight: lighter;
+        font-size: 80%;
     }
-  
-}
-
-html_to_be_rendered = "${html_to_be_rendered}</tr></table>"
-return html_to_be_rendered
-
-
-tasks = [
-    ["task_name": "All"],
-    ["task_name": "Create New Tenant", "tenant_index": "","place_holder": "New TenantID"],
-    ["task_name": "Deployment", "tenant_index": "","place_holder": "TenantID" ],
-    ["task_name": "Skip Stage"],
-]
-
-
-html_to_be_rendered = ""
-if (Task2 == "All") {
-    html_to_be_rendered = """<input type=\"text\" class=\" \" name=\"value\" value=\"\" placeholder=\"traffic rate\" title=\"Traffic Rate [0,15000]\"> """
-}
-
-return html_to_be_rendered
-
-
-
-tasks = [
-    ["task_name": "All"],
-    ["task_name": "Create New Tenant", "tenant_index": "","place_holder": "New TenantID"],
-    ["task_name": "Deployment", "tenant_index": "","place_holder": "TenantID" ],
-    ["task_name": "Skip Stage"],
-]
-
-
-tasks.each { task ->
-            html_to_be_rendered = """
-            ${html_to_be_rendered}
-            <tr>
-            <td>
-            <input name=\"value\" alt=\"${task.task_name}\" json=\"${task.task_name}\" type=\"radio\" class=\" \" value=\"${task.value}\">
-            <label title=\"${task.task_name}\" class=\" \">${task.task_name}</label>
-            </td>
-            </tr>
-            """
-  
-}
-
-html_to_be_rendered = "${html_to_be_rendered}</select>"
-return html_to_be_rendered
+</style>
+<div>
+<table>
+    <tr>
+        <td><span class = "task_des">${task_infor.description}</span></td>
+    </tr>
+    <tr>
+        <td><input name='value' value='' class='tenantindex' type='text' placeholder='${task_infor.placeholder}' ${task_infor.disabled}></td>
+    </tr>
+</table>
+</div>
+"""
+println(html)
+return html
