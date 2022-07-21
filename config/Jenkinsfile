@@ -14,8 +14,8 @@ pipeline {
             steps {
                 echo "STAGE: Copy file to Linux Build Server"
                 echo "ID: ${TenantIndex}"
-                echo "Command: ${command}"
                 echo "TEST: ${Test}"
+                echo "Task details"
             }
         }
         stage('Placing files') {
