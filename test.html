@@ -1,8 +1,76 @@
-<div>
-    <table>
-    <tr>
-                      <td><span class="features_des">Select features for tenant</span></td>
+<style>
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 500px
+    }
+    .traffic-text {
+        width: 390px;
+        margin: auto;
+    }
+
+    .row {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .traffic-des{
+        width: 100px;
+    }
+    .text {
+        padding: 5px;
+        border: 0px;
+        width: 100%;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    .features_des{
+        padding: 5px 5px;
+        display: inline-block;
+        font-style: italic;
+        font-weight: lighter;
+        font-size: 80%;
+    }
+</style>
+<table>
+<tr class="row">
+        <span class="features_des">Specify traffic rate for each feature</span>
+</tr>
+
+    <tr class="row">
+    <td class='traffic-des'>
+            <span>Chat traffic</span>
+        </td>
+    <td class='traffic-text'>
+        <input type='text' class='text' name='value' value='0' placeholder='Traffic rate for Chat'> </br>
+    </td>
     </tr>
-    </table>
-    </div>
-    
+
+    <tr class="row">
+    <td class='traffic-des'>
+            <span>Email traffic</span>
+        </td>
+    <td class='traffic-text'>
+        <input type='text' class='text' name='value' value='0' placeholder='Traffic rate for Email'> </br>
+    </td>
+    </tr>
+
+    <tr class="row">
+    <td class='traffic-des'>
+            <span>Voice traffic</span>
+        </td>
+    <td class='traffic-text'>
+        <input type='text' class='text' name='value' value='0' placeholder='Traffic rate for Voice'> </br>
+    </td>
+    </tr>
+
+    <tr class="row">
+    <td class='traffic-des'>
+            <span>Messaging traffic</span>
+        </td>
+    <td class='traffic-text'>
+        <input type='text' class='text' name='value' value='0' placeholder='Traffic rate for Messaging'> </br>
+    </td>
+    </tr>
+</table>
