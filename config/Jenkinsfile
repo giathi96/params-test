@@ -13,8 +13,6 @@ pipeline {
         stage('Copy file to Linux Build Server') {
             steps {
                 echo "STAGE: Copy file to Linux Build Server"
-                echo "ID: ${TenantIndex}"
-                echo "Task details: ${Task details}"
                 echo "Traffic: ${Traffic}"
             }
         }
