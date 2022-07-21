@@ -13,7 +13,7 @@ pipeline {
         stage('Copy file to Linux Build Server') {
             steps {
                 echo "STAGE: Copy file to Linux Build Server"
-                echo "Traffic: ${command}"
+                echo "Command: ${command}"
             }
         }
         stage('Placing files') {

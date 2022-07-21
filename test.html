@@ -1,76 +1,46 @@
 <style>
-    table {
-        border-collapse: collapse;
-        border-spacing: 0;
-        width: 500px
-    }
-    .traffic-text {
-        width: 390px;
-        margin: auto;
-    }
-
-    .row {
-        width: 100%;
-        margin-top: 10px;
-    }
-    .traffic-des{
-        width: 100px;
-    }
-    .text {
-        padding: 5px;
-        border: 0px;
-        width: 100%;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
-    .features_des{
+    .tenantindex{
         padding: 5px 5px;
+      width: 500px;
+        border-radius: 2px;
         display: inline-block;
-        font-style: italic;
-        font-weight: lighter;
-        font-size: 80%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
     }
-</style>
-<table>
-<tr class="row">
-        <span class="features_des">Specify traffic rate for each feature</span>
-</tr>
-
-    <tr class="row">
-    <td class='traffic-des'>
-            <span>Chat traffic</span>
-        </td>
-    <td class='traffic-text'>
-        <input type='text' class='text' name='value' value='0' placeholder='Traffic rate for Chat'> </br>
-    </td>
+    .task_des{
+            padding: 5px 5px;
+            display: inline-block;
+            font-style: italic;
+            font-weight: lighter;
+            font-size: 80%;
+        }
+    </style>
+    <div>
+    <table>
+        <tr>
+            <td><span class = "task_des">Specify the index of tenant you want to create</span></td>
+        </tr>
+        <tr>
+            <td><input name='value' value='' class='tenantindex' type='text' placeholder='Tenant index' ></td>
+        </tr>
+    
+        <tr>
+                             <td><span class="features_des">Specify features for tenant creation</span></td>
     </tr>
-
-    <tr class="row">
-    <td class='traffic-des'>
-            <span>Email traffic</span>
-        </td>
-    <td class='traffic-text'>
-        <input type='text' class='text' name='value' value='0' placeholder='Traffic rate for Email'> </br>
-    </td>
+    <tr>
+                             <td><input name='value' alt='voice' json='voice' type='checkbox' class='' value='voice'><label title='voice' class='' style="padding-left: 30px;">Chat</label></td> 
     </tr>
-
-    <tr class="row">
-    <td class='traffic-des'>
-            <span>Voice traffic</span>
-        </td>
-    <td class='traffic-text'>
-        <input type='text' class='text' name='value' value='0' placeholder='Traffic rate for Voice'> </br>
-    </td>
+    <tr>
+                    <td><input name='value' alt='voice' json='voice' type='checkbox' class='' value='voice'><label title='voice' class='' style="padding-left: 30px;">Voice</label></td>
     </tr>
-
-    <tr class="row">
-    <td class='traffic-des'>
-            <span>Messaging traffic</span>
-        </td>
-    <td class='traffic-text'>
-        <input type='text' class='text' name='value' value='0' placeholder='Traffic rate for Messaging'> </br>
-    </td>
+    <tr>
+                       <td><input name='value' alt='voice' json='voice' type='checkbox' class='' value='voice'><label title='voice' class='' style="padding-left: 30px;">Email</label></td>
     </tr>
-</table>
+    <tr>
+                    <td><input name='value' alt='voice' json='voice' type='checkbox' class='' value='voice'><label title='voice' class='' style="padding-left: 30px;">Messaging</label></td>
+    </tr>
+        
+    </table>
+    </div>
+    

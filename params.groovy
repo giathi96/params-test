@@ -1,40 +1,23 @@
-features =[
-     ["channel_name": "Chat", "traffic_rate": "" ,"placeholder":"Traffic rate for Chat", "value":"chat"],
-    ["channel_name": "Email", "traffic_rate": "" ,"placeholder":"Traffic rate for Email","value":"email"],
-    ["channel_name": "Voice", "traffic_rate": "" ,"placeholder":"Traffic rate for Voice","value":"voice"],
-    ["channel_name": "Messaging", "traffic_rate":"" ,"placeholder":"Traffic rate for Messaging","value":"messaging"],
+Task = "all"
+tasks_info = [
+    "skip": ["placeholder":"Skip this field", "disabled":"disabled", "description":"Can't enter this field because task is Skip"],
+    "all": ["placeholder":"Tenant index", "disabled":"", "description":"Specify the index of tenant you want to create"],
+    "deploy": ["placeholder":"Tenant index", "disabled":"", "description":"Specify the index of an existing tenant you want to use"],
+    "create": ["placeholder":"Tenant index", "disabled":"", "description":"Specify the index of tenant you want to create"],
 ]
-   
-
-html_to_be_rendered = """
+task_infor = tasks_info[Task]
+html ="""
 <style>
-    table {
-        border-collapse: collapse;
-        border-spacing: 0;
-        width: 500px
-    }
-    .traffic-text {
-        width: 390px;
-        margin: auto;
-    }
-
-    .row {
-        width: 100%;
-        margin-top: 10px;
-    }
-    .traffic-des{
-        width: 100px;
-    }
-    .text {
-        padding: 5px;
-        border: 0px;
-        width: 100%;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
-    .features_des{
+.tenantindex{
+    padding: 5px 5px;
+  width: 500px;
+    border-radius: 2px;
+    display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.task_des{
         padding: 5px 5px;
         display: inline-block;
         font-style: italic;
@@ -42,30 +25,44 @@ html_to_be_rendered = """
         font-size: 80%;
     }
 </style>
+<div>
 <table>
-<tr class="row">
-        <span class="features_des">Specify traffic rate for each feature</span>
-</tr>
-"""
-features.each { feature ->
-  html_to_be_rendered = """
-    ${html_to_be_rendered}
-    <tr class="row">
-    <td class='traffic-des'>
-            <span>${feature.channel_name} traffic</span>
-        </td>
-    <td class='traffic-text'>
-        <input type='text' class='text' name='value' value='0' placeholder='${feature.placeholder}'> </br>
-    </td>
+    <tr>
+        <td><span class = "task_des">${task_infor.description}</span></td>
+    </tr>
+    <tr>
+        <td><input name='value' value='' class='tenantindex' type='text' placeholder='${task_infor.placeholder}' ${task_infor.disabled}></td>
     </tr>
 """
+
+if (Task == "all" || Task == "create"){
+    html ="""
+    ${html}
+    <tr>
+                         <td><span class="features_des">Specify features for tenant creation</span></td>
+</tr>
+<tr>
+                         <td><input name='value' alt='voice' json='voice' type='checkbox' class='' value='voice'><label title='voice' class='' style="padding-left: 30px;">Chat</label></td> 
+</tr>
+<tr>
+                <td><input name='value' alt='voice' json='voice' type='checkbox' class='' value='voice'><label title='voice' class='' style="padding-left: 30px;">Voice</label></td>
+</tr>
+<tr>
+                   <td><input name='value' alt='voice' json='voice' type='checkbox' class='' value='voice'><label title='voice' class='' style="padding-left: 30px;">Email</label></td>
+</tr>
+<tr>
+                <td><input name='value' alt='voice' json='voice' type='checkbox' class='' value='voice'><label title='voice' class='' style="padding-left: 30px;">Messaging</label></td>
+</tr>
+    """
 }
 
-
-html_to_be_rendered = "${html_to_be_rendered}</table>"
-
-println(html_to_be_rendered)
-return html_to_be_rendered
+html = """
+${html}
+</table>
+</div>
+"""
+println(html)
+return html
 
 
 // task = Task
