@@ -36,41 +36,6 @@ pipeline {
         stage('Configuration') {
             steps {
                 echo "STAGE: CONFIGURATION"
-                script{
-                        lab = "${params.Lab}"
-                        taskArr = "${params.Tasks}".split(',').collect{it as String}
-                        for(i = 0; i < taskArr.size(); i++){
-                            taskArr[i].replaceAll("\\s","")
-                            if (taskArr[i] == ""){
-                                taskArr.remove(i);
-                                i--;
-                            }
-                        }
-                        command = "python app.py --lab ${lab} "
-
-                        task = taskArr[0];
-                        command = command + "--task " + "${task}"
-                        tenantIndex = "";
-                        if (taskArr.size() == 2){
-                            tenantIndex = taskArr[1];
-                            command = command + " --index " + "${tenantIndex} "
-                        }
-
-                        features = "${params.Features}".split(',').collect{it as String}
-                        for(i = 0; i < features.size(); i++){
-                            features[i].replaceAll("\\s","")
-                            if (features[i] == ""){
-                                features.remove(i);
-                                    i--;
-                            }
-                        } 
-                        if (features.size() != 0) {
-                            command += " --features "
-                            for (i = 0; i < features.size(); i +=2){
-                                command = command + features[i] + " "
-                            } 
-                        }    
-                } 
                 echo "- PARAMS: task = ${task} TenantIndex =  ${tenantIndex} Features =  ${features}"
                 echo "- Run command: ${command}"
                 // sshCommand remote: remote, command: "${command}"
