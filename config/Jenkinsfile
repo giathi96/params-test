@@ -15,12 +15,12 @@ pipeline {
                 echo "STAGE: Copy file to Linux Build Server"
                 script{
                     command = ""
-                    features = "${params['Tenant Features']}".replaceAll("\\s"," ")
-                    lab = "${params['Lab']}".replaceAll("\\s","")
-                    task = "${params['Task']}".replaceAll("\\s","")
-                    id = "${params['Tenant Index']}".replaceAll("\\s","")
+                    features = "${params['Tenant Features']}".replaceAll(","," ")
+                    lab = "${params['Lab']}".replaceAll(",","")
+                    task = "${params['Task']}".replaceAll(",","")
+                    id = "${params['Tenant Index']}".replaceAll(",","")
                     if(id != ""){
-                        command += "--tenantid " + "${params['Tenant Index']}".replaceAll("\\s","") + " "
+                        command += "--tenantid " + "${params['Tenant Index']}".replaceAll(",","") + " "
                     }
                     command = "python3 app.py --lab ${lab} --task ${task}"
                     if(features != ""){
