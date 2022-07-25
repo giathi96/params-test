@@ -17,9 +17,9 @@ pipeline {
                 script{
                     //features = Tenant_Features.split(',').collect{it as String}
                     features = "${params['Tenant Features']}".split(',').collect{it as String}
-                    command = "python3 app.py --lab ${Lab} --task ${task} "
+                    command = "python3 app.py --lab ${Lab}.replaceAll("\\s","") --task ${task}.replaceAll("\\s","") "
                     if("${params['Tenant Index']}" != ""){
-                        command += "--tenantid " + "${params['Tenant Index']}" + " "
+                        command += "--tenantid " + "${params['Tenant Index']}".replaceAll("\\s","") + " "
                     }
                     if(features.size() > 1){
                         command += "--features "
