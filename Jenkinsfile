@@ -21,7 +21,7 @@ pipeline {
                 echo "- Extract in Build Server"
                 // sshCommand remote: remote, command: 'cd ./Jenkins; tar -xf ./archive.tar'
                 // sshCommand remote: remote, command: "ls -lrt ./Jenkins/" 
-                echo "TEST: ${params['test ne']}"
+                // test from giathi
             }
         }
         stage('Placing files') {
