@@ -32,6 +32,7 @@ pipeline {
                 // sshCommand remote: remote, command: 'cp -R ./Jenkins/Python/* ./pythonAdmin'
                 // sshCommand remote: remote, command: 'cp ./Jenkins/Config/PythonConfig/Labs/perf-5/ccaas-system-config.json ./pythonAdmin'
                 // sshCommand remote: remote, command: 'chmod 755 ./pythonAdmin/tools/chromedriver'
+                // test
             }
         }
         stage('Configuration') {
