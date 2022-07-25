@@ -13,8 +13,20 @@ pipeline {
         stage('Copy file to Linux Build Server') {
             steps {
                 echo "STAGE: Copy file to Linux Build Server"
-                echo "Command: ${command}"
                 echo "Final: ${params['test ne']}"
+                script{
+                    //features = Tenant_Features.split(',').collect{it as String}
+                    features = "${params['Tenant Features]}".split(',').collect{it as String}
+                    command = ""
+                    if(features.size() > 1){
+                        command += "--features "
+                        for(i = 0; i < features.size(); i++){
+                            features[i].replaceAll("\\s","")
+                            command += features[i] + " "
+                        }
+                    }
+                }
+                echo "Command: ${command}"
             }
         }
         stage('Placing files') {
