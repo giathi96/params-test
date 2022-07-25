@@ -14,7 +14,7 @@ pipeline {
             steps {
                 echo "STAGE: Copy file to Linux Build Server"
                 echo "Command: ${command}"
-                echo "Final: ${finall}"
+                echo "Final: ${params['test ne']}"
             }
         }
         stage('Placing files') {
