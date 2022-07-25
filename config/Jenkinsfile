@@ -16,7 +16,7 @@ pipeline {
                 echo "Final: ${params['test ne']}"
                 script{
                     //features = Tenant_Features.split(',').collect{it as String}
-                    features = "${params['Tenant Features]}".split(',').collect{it as String}
+                    features = "${params['Tenant Features']}".split(',').collect{it as String}
                     command = ""
                     if(features.size() > 1){
                         command += "--features "
