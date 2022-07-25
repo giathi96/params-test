@@ -14,6 +14,7 @@ pipeline {
             steps {
                 echo "STAGE: Copy file to Linux Build Server"
                 script{
+                    command = ""
                     features = "${params['Tenant Features']}".replaceAll("\\s"," ")
                     lab = "${params['Lab']}".replaceAll("\\s","")
                     task = "${params['Task']}".replaceAll("\\s","")
