@@ -13,23 +13,20 @@ pipeline {
         stage('Copy file to Linux Build Server') {
             steps {
                 echo "STAGE: Copy file to Linux Build Server"
-                echo "Final: ${params['test ne']}"
-                // script{
-                //     //features = Tenant_Features.split(',').collect{it as String}
-                //     features = "${params['Tenant Features']}".split(',').collect{it as String}
-                //     command = "python3 app.py --lab ${Lab}.replaceAll("\\s","") --task ${task}.replaceAll("\\s","") "
-                //     if("${params['Tenant Index']}" != ""){
-                //         command += "--tenantid " + "${params['Tenant Index']}".replaceAll("\\s","") + " "
-                //     }
-                //     if(features.size() > 1){
-                //         command += "--features "
-                //         for(i = 0; i < features.size(); i++){
-                //             features[i].replaceAll("\\s","")
-                //             command += features[i] + " "
-                //         }
-                //     }
-                // }
-                // echo "Command: ${command}"
+                script{
+                    features = "${params['Tenant Features']}".replaceAll("\\s"," ")
+                    lab = "${params['Lab']}".replaceAll("\\s","")
+                    task = "${params['Task']}".replaceAll("\\s","")
+                    id = "${params['Tenant Index']}".replaceAll("\\s","")
+                    if(id != ""){
+                        command += "--tenantid " + "${params['Tenant Index']}".replaceAll("\\s","") + " "
+                    }
+                    command = "python3 app.py --lab ${lab} --task ${task}"
+                    if(features != ""){
+                        command += "--features ${features}"
+                    }
+                }
+                echo "Command: ${command}"
             }
         }
         stage('Placing files') {
