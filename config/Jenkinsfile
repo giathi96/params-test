@@ -1,37 +1,58 @@
-/*
-    def remote = [:]
-    remote.name = 'sil-toolserver-1'
-    remote.host = '10.134.134.10'
-    remote.user = 'cust'
-    remote.password = 'AvayaSIL123$'
-    remote.allowAnyHosts = true
-*/
-pipeline {
-    agent any
-    stages {
-        stage('Branch') {
-            steps{
-                echo "STAGE: BRANCH"
-                echo "This Pipeline is on branch master"
-            }
-        }
-        stage('Configuration') {
-            steps{
-                echo "STAGE: CONFIGURATION"
-                echo "Run Script on branch: ${Branch}"
-                echo "Param:"
-                echo "  - Lab: ${Lab}" 
-                echo "  - Task: ${Task}"
-                echo "  - Tenant Index: ${params['Tenant Index']}"
-                echo "  - Tenant Features: ${params['Tenant Features']}"
-                echo "  - Chat Traffic: ${params['Chat Traffic']}"
-                echo "  - Voice Traffic: ${params['Voice Traffic']}"
-                echo "  - Email Traffic: ${params['Email Traffic']}"
-                echo "  - Messaging Traffic: ${params['Messaging Traffic']}"
-                echo "Command: python3 app.py --lab ${Lab} --task ${Task} --tenant ${params['Tenant Index']} --features ${params['Tenant Features']}"
-            }
-        }  
-    }
-}
+/**** CCaaS Performance Automation ****/
+/ Scripted Pipeline Version /
 
-        
+// def remote = [:]
+// remote.name = 'sil-toolserver-1'
+// remote.host = '10.134.134.10'
+// remote.user = 'cust'
+// remote.password = 'AvayaSIL123$'
+// remote.allowAnyHosts = true
+    
+node {
+	
+	stage('Checkout Repo') {
+		checkout scm
+	}
+
+	stage('Copy Files To Linux Build Server') {
+		echo 'Copying files...'
+		// sshCommand remote: remote, command: 'cd; [ -d ./Jenkins ] && rm -f ./Jenkins/* || mkdir ./Jenkins; chmod 777 ./Jenkins'
+		// sh 'cd $WORKSPACE; tar -zcf archive.tar ./Python/ ./Config/'
+		// sshPut remote: remote, from: "$WORKSPACE/archive.tar", into: "./Jenkins/"
+		// sshCommand remote: remote, command: 'cd ./Jenkins; tar -xf ./archive.tar'
+		// sshCommand remote: remote, command: "ls -lrt ./Jenkins/"      
+	}
+	
+	stage('Placing files') {
+		echo 'Placing files in Working Folder...'
+	// 	sshCommand remote: remote, command: 'rm -Rf ./pythonAdmin/*'
+	// 	sshCommand remote: remote, command: 'cp -R ./Jenkins/Python/* ./pythonAdmin'
+	// 	/*sshCommand remote: remote, command: 'cp ./Jenkins/Config/PythonConfig/Labs/perf-5/ccaas-system-config.json ./pythonAdmin'*/
+	// 	sshCommand remote: remote, command: 'cp ./Jenkins/Config/PythonConfig/Labs/perf-14/ccaas-system-config.json ./pythonAdmin'
+	// 	sshCommand remote: remote, command: 'chmod 755 ./pythonAdmin/tools/chromedriver'
+    }
+    
+	stage('Configuration'){
+		echo 'Executing Tenant deployment script'
+        echo "Param:"
+        echo "  - Lab: ${Lab}" 
+        echo "  - Task: ${Task}"
+        echo "  - Tenant Index: ${params['Tenant Index']}"
+        echo "  - Tenant Features: ${params['Tenant Features']}"
+        echo "  - Chat Traffic: ${params['Chat Traffic']}"
+        echo "  - Voice Traffic: ${params['Voice Traffic']}"
+        echo "  - Email Traffic: ${params['Email Traffic']}"
+        echo "  - Messaging Traffic: ${params['Messaging Traffic']}"
+        echo "Command: python3 app.py --lab ${Lab} --task ${Task} --tenant ${params['Tenant Index']} --features ${params['Tenant Features']}"
+	}
+
+
+  	stage('Test') {
+        echo 'Testing..'
+    }
+    
+    stage('Deploy') {
+        echo 'Deploying....'
+    }
+
+}
