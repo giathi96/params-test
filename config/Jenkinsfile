@@ -12,6 +12,7 @@ pipeline {
         stage('Configuration') {
             steps{
                 echo "STAGE: CONFIGURATION"
+                echo "Lab: " + params.Branch
                 echo "Lab: " + params.Lab
                 echo "Task: ${Task}"
                 echo "Tenant Index: ${params['Tenant Index']}"
