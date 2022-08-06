@@ -6,17 +6,21 @@
     remote.password = 'AvayaSIL123$'
     remote.allowAnyHosts = true
 */
-
 pipeline {
     agent any
     stages {
         stage('Configuration') {
             steps{
                 echo "STAGE: CONFIGURATION"
-                print "Lab: " + params.Lab
+                echo "Lab: " + params.Lab
                 echo "Task: ${Task}"
-                echo "Task: ${params['Tenant Index']}"
-                echo "Task: ${params['Tenant Features']}"
+                echo "Tenant Index: ${params['Tenant Index']}"
+                echo "Tenant Features: ${params['Tenant Features']}"
+                echo "Chat Traffic: ${params['Chat Traffic']}"
+                echo "Voice Traffic: ${params['Voice Traffic']}"
+                echo "Email Traffic: ${params['Email Traffic']}"
+                echo "Messaging Traffic: ${params['Messaging Traffic']}"
+
             }
         }  
     }

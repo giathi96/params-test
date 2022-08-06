@@ -21,7 +21,6 @@ pipeline {
                 echo "- Extract in Build Server"
                 // sshCommand remote: remote, command: 'cd ./Jenkins; tar -xf ./archive.tar'
                 // sshCommand remote: remote, command: "ls -lrt ./Jenkins/" 
-                echo "TEST: ${params['test ne']}"
             }
         }
         stage('Placing files') {
@@ -38,9 +37,7 @@ pipeline {
         stage('Configuration') {
             steps {
                 echo "STAGE: CONFIGURATION"
-                echo "- PARAMS: task = ${task} TenantIndex =  ${tenantIndex} Features =  ${features}"
                 echo "- Run command: ${command}"
-                // sshCommand remote: remote, command: "${command}"
             }
         }
         stage('Login Agent') {
