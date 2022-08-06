@@ -12,7 +12,7 @@ pipeline {
         stage('Configuration') {
             steps{
                 echo "STAGE: CONFIGURATION"
-                echo "Run Script on branch: " + params.Branch
+                echo "Run Script on branch: ${Branch}"
                 echo "Param:"
                 echo "  - Lab: ${Lab}" 
                 echo "  - Task: ${Task}"
@@ -22,7 +22,7 @@ pipeline {
                 echo "  - Voice Traffic: ${params['Voice Traffic']}"
                 echo "  - Email Traffic: ${params['Email Traffic']}"
                 echo "  - Messaging Traffic: ${params['Messaging Traffic']}"
-                echo "Command": "python3 app.py --lab " + params.Lab + " --task " + "${Task}" + " --tenant " + "${params['Tenant Index']}" + " --features " + "${params['Tenant Features']}"
+                echo "Command: python3 app.py --lab ${Lab} --task ${Task} --tenant ${params['Tenant Index']} --features ${params['Tenant Features']}"
             }
         }  
     }
