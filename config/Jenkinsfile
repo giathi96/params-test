@@ -14,7 +14,7 @@ pipeline {
             steps{
                 echo "STAGE: CONFIGURATION"
                 echo "Command: ${Lab}"
-                echo "Task: ${Task}"Tenant Index
+                echo "Task: ${Task}"
                 echo "Task: ${params['Tenant Index']}"
                 echo "Task: ${params['Tenant Features']}"
             }
