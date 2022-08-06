@@ -10,53 +10,15 @@
 pipeline {
     agent any
     stages {
-        stage('Copy file to Linux Build Server') {
-            steps {
-                echo "STAGE: Copy file to Linux Build Server"
-                script{
-                    command = ""
-                    features = "${params['Tenant Features']}".replaceAll(","," ")
-                    lab = "${params['Lab']}".replaceAll(",","")
-                    task = "${params['Task']}".replaceAll(",","")
-                    id = "${params['Tenant Index']}".replaceAll(",","")
-                    if(id != ""){
-                        command += "--tenantid " + "${params['Tenant Index']}".replaceAll(",","") + " "
-                    }
-                    command = "python3 app.py --lab ${lab} --task ${task}"
-                    if(features != ""){
-                        command += "--features ${features}"
-                    }
-                }
-                echo "Command: ${command}"
-            }
-        }
-        stage('Placing files') {
-            steps {
-                echo 'STAGE: Placing files'
-            }
-        }
         stage('Configuration') {
-            steps {
+            steps{
                 echo "STAGE: CONFIGURATION"
+                echo "Command: ${Lab}"
+                echo "Task: ${Task}"Tenant Index
+                echo "Task: ${params['Tenant Index']}"
+                echo "Task: ${params['Tenant Features']}"
             }
-        }
-        stage('Login Agent') {
-            steps {
-                echo "STAGE: LOGIN AGENT"
-            }
-        }
-
-        stage('Inject Traffic Test') {
-            steps {
-                echo "STAGE: Inject Traffic Test"
-            }
-        }
-
-        stage('Other stages') {
-            steps {
-                echo "STAGE: ...."
-            }
-        }        
+        }  
     }
 }
 
