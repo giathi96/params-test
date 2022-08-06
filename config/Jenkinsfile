@@ -1,5 +1,4 @@
 /**** CCaaS Performance Automation ****/
-/ Scripted Pipeline Version /
 
 // def remote = [:]
 // remote.name = 'sil-toolserver-1'
