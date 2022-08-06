@@ -13,7 +13,7 @@ pipeline {
         stage('Configuration') {
             steps{
                 echo "STAGE: CONFIGURATION"
-                echo "Command: ${Lab}"
+                echo "Lab: " + "${Lab}"
                 echo "Task: ${Task}"
                 echo "Task: ${params['Tenant Index']}"
                 echo "Task: ${params['Tenant Features']}"
