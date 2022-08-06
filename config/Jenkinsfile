@@ -9,6 +9,12 @@
 pipeline {
     agent any
     stages {
+        stage('Branch') {
+            steps{
+                echo "STAGE: BRANCH"
+                echo "This Pipeline is on branch master"
+            }
+        }
         stage('Configuration') {
             steps{
                 echo "STAGE: CONFIGURATION"
